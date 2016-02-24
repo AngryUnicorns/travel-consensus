@@ -7,14 +7,17 @@ var SuggestionItem = React.createClass({
     var id = {};
     id.id_suggestion = this.props.suggestion.id;
     DeleteHelper.deleteSuggestion(id);
+  },
 
+  voteHandler: function() {
+    alert('You clicked the up arrow!');
   },
 
   render: function() {
     return (
-      <p className="suggestion" onClick={this.clickHandler}>
-      {this.props.suggestion.suggestion} <i className="fa fa-times"></i>
-      </p>
+      <li className="suggestion">
+      {this.props.suggestion.suggestion} <i className="fa fa-arrow-up" onClick={this.voteHandler}></i>  <i className="fa fa-times" onClick={this.clickHandler}></i>
+      </li>
     )
   }
 })
