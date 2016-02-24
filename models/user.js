@@ -12,13 +12,14 @@ const User = module.exports;
   Insert new user into database
 
   attrs {
-    email:      String <user's email address>
+    auth_id:    String <user id provided by 0Auth>
     username:   String <username to be shown in chat>
-    password:   String <stored password and hash, TBD later>
+    image:      String <facebook profile image url>
+    email:      String <user's email address>
   }
 */
 User.create = function(attrs) {
-  return db('user').insert(attrs, ['id', 'username', 'email'])
+  return db('user').insert(attrs, ['id', 'username', 'email', 'image', 'auth_id'])
     .catch(reportError('error inserting user into db'))
 }
 
