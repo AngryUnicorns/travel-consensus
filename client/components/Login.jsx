@@ -5,7 +5,7 @@ var User = require('../models/users.js');
 var Login = React.createClass({
   showLogin: function(){  
     User.signIn().then(function(user){
-      
+      console.log(user);
     });
   },
   render: function() {
