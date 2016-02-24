@@ -93,7 +93,7 @@ describe('Message model', function() {
 
       yield Message.create(badContentMessage)
         .then(function(result) {
-          reportError('created message with invalid content', result);
+          // reportError('created message with invalid content', result);
           expect(null).to.be.ok; // reject test
         })
         .catch(function(error) {
