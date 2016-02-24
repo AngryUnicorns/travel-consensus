@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var DeleteHelper = require('../requests/delete.js')
+var DeleteHelper = require('../requests/delete.js');
+var Votes = require('../models/votes.js');
 
 var SuggestionItem = React.createClass({
   clickHandler: function() {
