@@ -6,7 +6,7 @@ OAuth.initialize('njnrc8cfKF1IOQAKEGLjQnjl-j0');
 const User = module.exports;
 
 User.signIn = function() {
-	return OAuth.popup('github').then(function(res){
+	return OAuth.popup('facebook').then(function(res){
 		return OAuthUser.signin(res);
 	}).fail(function(error){
 		console.log(error);
