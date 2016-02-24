@@ -19,9 +19,29 @@ const User = module.exports;
   }
 */
 User.create = function(attrs) {
-  return db('user').insert(attrs, ['id', 'username', 'email', 'image', 'auth_id'])
-    .catch(reportError('error inserting user into db'))
+  return User.findByAuthId(attrs['auth_id']).then(function(user){
+    if(user) {
+      delete user['auth_id'];
+      return User.updateById(user.id, attrs);
+    } else {
+      return User.insert(attrs);
+    }
+  })
 }
+
+User.updateById = function(id, attrs) {
+  if(attrs.id) {
+    delete attrs.id;
+  }
+  return db('users').select().where({id : id}).update(attrs);
+}
+
+User.insert = function(attrs) {
+  return db('users').insert(attrs, ['id', 'username', 'email', 'image', 'auth_id'])
+  .catch(reportError('error inserting user into db')).then(function(users){
+    return users[0];
+  });
+} 
 
 /*
   Password hash and decrypt functions, using bcrypt
@@ -42,18 +62,10 @@ User.validPassword = function(password) {
 */
 
 User.findOne = function(email) {
-  return db.select('*').from('users').where({ 'email': email })
-    .catch(reportError('error retrieving user'))
-    .then(function(user) {
-      if (user) {
-        console.warn(email + ' is not available!');
-        return true;
-      } else {
-        console.log(email + ' is available');
-        return false;
-      }
-    })
+  return User.findFirst({email : email});
 }
+
+
 
 /*
   function to find user by ID
@@ -61,18 +73,27 @@ User.findOne = function(email) {
 */
 
 User.findById = function(id) {
-  return db.select('*').from('users').where({ 'id': id })
-    .catch(function(error) {
+  return User.findFirst({id : id}).catch(function(error) {
       console.warn('error retrieving user id', id);
       console.warn(error);
       throw error;
-    })
-    .then(function(result) {
+  }).then(function(result) {
       console.log('success retrieving user');
       return result;
-    })
-    .catch(reportError('error retrieving user id'))
-    .then(first)
+  })
+  .catch(reportError('error retrieving user id'));
+}
+
+User.findByAuthId = function(authId) {
+  return User.findFirst({auth_id : authId});
+}
+
+User.find = function(query) {
+  return db.select('*').from('users').where(query);
+}
+
+User.findFirst = function(query) {
+  return User.find(query).then(first);
 }
 
 /*
