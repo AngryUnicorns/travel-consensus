@@ -44,4 +44,24 @@ describe('User model', function() {
     	users.length.should.equal(1);
     });
 
+    it_.only('should create a user from an auth response', function * (){
+    	
+    	var authResponse = {
+    		data : {
+    			email : 'test.com',
+    			name : "Tom Test",
+    			id : "https://api.stormpath.com/v1/accounts/testID",
+    			avatar : 'image.jpg'
+    		}
+    	};
+    	  var expected = {
+    		email : authResponse.data.email,
+    		username : authResponse.data.name,
+    		auth_id : 'testID',
+    		image : authResponse.data.avatar,
+    	};
+    	var user = yield User.createFromAuth(authResponse);
+    	user.should.contain(expected);
+    })
+
 })

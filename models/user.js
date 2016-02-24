@@ -65,6 +65,27 @@ User.findOne = function(email) {
   return User.findFirst({email : email});
 }
 
+// Accepts an auth response and creates a user from it
+User.createFromAuth = function(auth) {
+  var user = convertAuthToUser(auth);
+  return User.create(user);
+}
+
+var convertAuthToUser = function(auth) {
+  var authData = auth.data;
+  var authId = getAuthId(authData);
+  return {
+    auth_id : authId,
+    email : authData.email,
+    username : authData.name,
+    image : authData.avatar,
+  };
+}
+
+var getAuthId = function(authData) {
+  return authData.id.split('/')[5];
+}
+
 
 
 /*
