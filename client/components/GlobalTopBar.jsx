@@ -1,7 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Login = require('./Login.jsx');
-var SignUp = require('./SignUp.jsx');
 
 var GlobalTopBar = React.createClass({
 	handleClick: function(){
@@ -32,7 +31,6 @@ var GlobalTopBar = React.createClass({
 				</div>
 
     			<Login className="login-form"/>
-    			<SignUp className="signup-form"/>
 
 			</div>
 		);
