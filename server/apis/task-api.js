@@ -162,9 +162,10 @@ TaskAPI.get('/:id_task/suggestions', function(request, response) {
 
 
 TaskAPI.post('/:id_task/suggestions/:id_suggestion/vote', function(request, response) {
-  var userObject = request.body;
+  var userId = request.body.user_id;
+  var suggestionId = request.params.id_suggestion
 
-  Vote.addVote(userObject)
+  Vote.addVote(suggestionId, userId)
     .then(sendStatusAndData(response, 200))
     .catch(sendStatusAndError(response, 500, 'Server error posting vote'))
 })

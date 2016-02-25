@@ -6,8 +6,8 @@ const first = require('ramda').head;
 const Votes = module.exports;
 
 
-Votes.addVote = function(userObject) {
-  return db('votes').insert({id_suggestion: userObject.suggestionID, id_user: userObject.userID})
+Votes.addVote = function(suggestionId, userId) {
+  return db('votes').insert({id_suggestion: suggestionId, id_user: userId})
     .catch(reportError('error updating votes on suggestion'))
 }
 

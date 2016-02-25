@@ -62,12 +62,12 @@ exports.addNewSuggestion = function(suggestionObject) {
     })
 };
 // '/:id_task/suggestions/:id_suggestion/vote'
-exports.upVoteSuggestion = function(userObject) {
-  return fetch('task/' + window.globalStateTaskId + '/suggestions/' + window.globalStateSuggestionId + '/vote', {
+exports.upVoteSuggestion = function(suggestionId, userId) {
+  return fetch('task/' + window.globalStateTaskId + '/suggestions/' + suggestionId + '/vote', {
   // return fetch('/:id_task/suggestions/:id_suggestion/vote', {
     method: 'POST',
     headers: requestHeaders,
-    body: JSON.stringify(userObject)
+    body: JSON.stringify({user_id: userId})
   })
   .then(function(response){
     return response.json();
