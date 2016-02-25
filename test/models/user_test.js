@@ -44,7 +44,7 @@ describe('User model', function() {
     	users.length.should.equal(1);
     });
 
-    it_.only('should create a user from an auth response', function * (){
+    it_('should create a user from an auth response', function * (){
     	
     	var authResponse = {
     		data : {

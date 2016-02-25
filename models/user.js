@@ -20,7 +20,6 @@ const User = module.exports;
 */
 User.create = function(attrs) {
   return User.findByAuthId(attrs['auth_id']).then(function(user){
-    console.log(user);
     if(user) {
       delete user['auth_id'];
       return User.updateById(user.id, attrs);
