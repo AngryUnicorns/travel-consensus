@@ -61,3 +61,25 @@ exports.addNewSuggestion = function(suggestionObject) {
       return data;
     })
 };
+
+
+
+/*
+  Sends a request to the server to create a new user
+
+  See server/apis/user-api
+*/
+exports.createUser = function(authResponse) {
+  return fetch('user/new', {
+    method: 'POST',
+    headers: requestHeaders,
+    body: JSON.stringify(authResponse)
+  })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log('!Posted new suggestion to database!', data);
+      return data;
+    })
+};
