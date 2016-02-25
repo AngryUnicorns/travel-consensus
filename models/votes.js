@@ -6,8 +6,8 @@ const first = require('ramda').head;
 const Votes = module.exports;
 
 
-Votes.addVote = function(suggestionID, userID) {
-  return db('votes').where({id: suggestionId}).increment('count', 1).insert({user_id: userID})
+Votes.addVote = function(userObject) {
+  return db('votes').insert({id_suggestion: userObject.suggestionID, id_user: userObject.userID})
     .catch(reportError('error updating votes on suggestion'))
 }
 
@@ -19,3 +19,8 @@ Votes.removeVote = function(suggestionID) {
   return db('votes').where({id: suggestionId}).decrement('count', 1)
     .catch(reportError('error updating votes on suggestion'))
 }
+
+// Votes.create = function(attrs) {
+//   return db('user').insert(attrs, ['id', 'username', 'email', 'image', 'auth_id'])
+//     .catch(reportError('error inserting user into db'))
+// }
