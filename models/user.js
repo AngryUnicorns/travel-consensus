@@ -26,7 +26,9 @@ User.create = function(attrs) {
     } else {
       return User.insert(attrs);
     }
-  })
+  }).then(function(user){
+    console.log("User created for " + user.username);
+  });
 }
 
 User.updateById = function(id, attrs) {
