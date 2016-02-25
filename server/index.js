@@ -69,9 +69,11 @@ if (process.env.NODE_ENV !== 'test') {
 */
   var tripRouter = require('./apis/trip-api');
   var taskRouter = require('./apis/task-api');
+  var userRouter = require('./apis/user-api');
 
   routes.use('/trip', tripRouter);
   routes.use('/task', taskRouter);
+  routes.use('/user', userRouter);
 
 /*
   Signin and signup routes handled by Passport
