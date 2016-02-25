@@ -63,7 +63,6 @@ exports.addNewSuggestion = function(suggestionObject) {
 };
 
 
-
 /*
   Sends a request to the server to create a new user
 
@@ -83,3 +82,37 @@ exports.createUser = function(authResponse) {
       return data;
     })
 };
+// '/:id_task/suggestions/:id_suggestion/vote'
+exports.upVoteSuggestion = function(suggestionId, userId) {
+  return fetch('task/' + window.globalStateTaskId + '/suggestions/' + suggestionId + '/vote', {
+  // return fetch('/:id_task/suggestions/:id_suggestion/vote', {
+    method: 'POST',
+    headers: requestHeaders,
+    body: JSON.stringify({user_id: userId})
+  })
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(data) {
+    console.log('!Posted new vote to database!', data);
+    return data;
+  })
+  .catch(function(res){
+    console.log('got an error over here! in post on upVoteSuggestion')
+  })
+};
+// '/:id_task/suggestions/:id_suggestion/vote'
+// exports.downVoteSuggestion = function(userObject) {
+//   return fetch(window.globalStateTaskId + '/suggestions/' + userObject.suggestionID + '/vote', {
+//     method: 'PUT',
+//     headers: requestHeaders,
+//     body: JSON.stringify(userObject)
+//   })
+//   .then(function(response){
+//     return response.json();
+//   })
+//   .then(function(data){
+//     console.log('!Changed Vote in database!', data)
+//     return data
+//   })
+// };
