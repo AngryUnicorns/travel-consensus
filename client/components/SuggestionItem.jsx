@@ -4,11 +4,6 @@ var DeleteHelper = require('../requests/delete.js');
 var PostHelper = require('../requests/post.js');
 var User = require('../models/users')
 
-//TO DELETE ONCE vote_users GETS COMPLETED
-var user = User.getID();
-var vote_users = [user];
-//NOT REAL MAKE SURE TO DELETE
-
 var SuggestionItem = React.createClass({
 
   clickHandler: function() {
@@ -25,9 +20,10 @@ var SuggestionItem = React.createClass({
   },
 
   arrowHelper: function() {
-    var user = User.getID();
+    var user = User.getID(),
+    userVoteArray = this.props.suggestion.vote_users;
 
-    if(vote_users.indexOf(user) === -1) {
+    if(userVoteArray.indexOf(user) === -1) {
       return "fa fa-arrow-up"
     }
     else {
