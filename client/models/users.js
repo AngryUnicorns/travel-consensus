@@ -1,16 +1,13 @@
 var OAuth = require('../lib/oauth.min.js').OAuth;
 var OAuthUser = require('../lib/oauth.min.js').User;
+var PostHelper = require('../requests/post.js');
 
 OAuth.initialize('njnrc8cfKF1IOQAKEGLjQnjl-j0');
 
 const User = module.exports;
 
 User.signIn = function() {
-	return OAuth.popup('facebook').then(function(res){
-		return OAuthUser.signin(res);
-	}).fail(function(error){
-		console.log(error);
-	})
+	return OAuth.popup('facebook').fail(console.log).then(OAuthUser.signin).then(PostHelper.createUser);
 }
 
 User.isLoggedIn = function() {
