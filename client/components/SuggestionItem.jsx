@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var DeleteHelper = require('../requests/delete.js')
+var DeleteHelper = require('../requests/delete.js');
+var PostHelper = require('../requests/post.js');
 
 var SuggestionItem = React.createClass({
   clickHandler: function() {
@@ -10,7 +11,13 @@ var SuggestionItem = React.createClass({
   },
 
   voteHandler: function() {
-    alert('You clicked the up arrow!');
+    suggestionId = this.props.suggestion.id;
+    userId = this.props.suggestion.id_user;
+
+
+    PostHelper.upVoteSuggestion(suggestionId, userId)
+
+    // this.props.upVoteSuggestion(this.props.suggestion.id)
   },
 
   render: function() {

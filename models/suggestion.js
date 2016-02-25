@@ -42,16 +42,17 @@ Suggestion.delete = function(suggestionId) {
 /*
   Add vote to suggestion
 */
-Suggestion.addVote = function(suggestionID) {
-  return db('suggestion').where({id: suggestionId}).increment('votes', 1)
-    .catch(reportError('error updating votes on suggestion'))
-}
+// Suggestion.addVote = function(suggestionID) {
+// console.log('suggestionIDsuggestionIDsuggestionID', suggestionID)
+//   // return db('suggestion').where({id: suggestionId}).increment('votes', 1)
+//   //   .catch(reportError('error updating votes on suggestion'))
+// }
 
-/*
-  Delete vote from suggestion
-*/
+// /*
+//   Delete vote from suggestion
+// */
 
-Suggestion.removeVote = function(suggestionID) {
-  return db('suggestion').where({id: suggestionId}).decrement('votes', 1)
-    .catch(reportError('error updating votes on suggestion'))
-}
+// Suggestion.removeVote = function(suggestionID) {
+//   return db('suggestion').where({id: suggestionId}).decrement('votes', 1)
+//     .catch(reportError('error updating votes on suggestion'))
+// }
