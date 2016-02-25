@@ -5,6 +5,8 @@ var TaskAPI    = require('express').Router();
 var Task       = require(__models + '/task');
 var Message    = require(__models + '/message');
 var Suggestion = require(__models + '/suggestion');
+var Vote       = require(__models + '/votes');
+
 
 module.exports = TaskAPI;
 
@@ -159,4 +161,19 @@ TaskAPI.get('/:id_task/suggestions', function(request, response) {
 
 
 
+TaskAPI.post('/:id_task/suggestions/:id_suggestion/vote', function(request, response) {
+  console.log('Making it top taskAPI', request)
+  var suggestionID = request.params.suggestionID;
 
+  Vote.addVote(suggestionID)
+    .then(sendStatusAndData(response, 200))
+    .catch(sendStatusAndError(response, 500, 'Server error posting vote'))
+})
+
+TaskAPI.put('/:id_task/suggestions/:id_suggestion/vote', function(request, response) {
+  var id_task = request.params.id_task;
+
+  Suggestion.allOfTask(id_task)
+    .then(sendStatusAndData(response, 200))
+    .catch(sendStatusAndError(response, 500, 'Server error changing vote'))
+})

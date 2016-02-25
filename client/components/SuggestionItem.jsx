@@ -7,7 +7,7 @@ var SuggestionItem = React.createClass({
   clickHandler: function() {
     var id = {};
     id.id_suggestion = this.props.suggestion.id;
-
+    window.globalStateSuggestionId = id.id_suggestion;
     DeleteHelper.deleteSuggestion(id);
   },
 
@@ -16,7 +16,7 @@ var SuggestionItem = React.createClass({
     userObject.suggestionID = this.props.suggestion.id;
     userObject.userID = this.props.suggestion.id_user;
 
-    console.log('Props R Us', this.props)
+    console.log('Props R Us', userObject)
 
     PostHelper.upVoteSuggestion(userObject)
 
