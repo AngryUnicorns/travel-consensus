@@ -22,10 +22,11 @@ var MessageList = React.createClass({
   },
 
   // Upon state change (posting a new message), scroll down to the last message.
-  componentDidUpdate: function() {
-    var objDiv = document.getElementById("messageListDiv");
-    objDiv.scrollIntoView(false);
-  }
+  
+  // componentDidUpdate: function() {
+  //   var objDiv = document.getElementById("messageListDiv");
+  //   objDiv.scrollIntoView(false);
+  // }
 
 });
 

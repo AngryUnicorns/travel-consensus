@@ -67,8 +67,7 @@ div.three {
 ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
-.top-bar-login,
-.top-bar-signup {
+.top-bar-login{
   position: absolute;
   z-index: 1;
   top: 4px;
@@ -77,6 +76,24 @@ div.three {
   height: 36px;
   margin-right: 7%;
 
+  background: white;
+  -webkit-appearance: none;
+  height: 30px;
+  width: 200px;
+  left: 50%;
+  top: 50%;
+  margin-top: -15px;
+  margin-left: -100px;
+  position: fixed;
+}
+
+.top-bar-logout{
+  position: absolute;
+  z-index: 1;
+  top: 4px;
+  right: 0;
+  height: 36px;
+  margin-right: 7%;
   background: white;
 }
 
@@ -507,12 +524,14 @@ div.three {
 }
 
 .chat-display {
-  overflow-y: scroll;
-
-  height: 65%;
+  overflow: scroll;
+  height: 250px;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
   padding: 5px;
-
   background-color: #e3e3e3;
+  border-bottom: 2px solid white;
 }
 
 .message-author {
@@ -521,7 +540,7 @@ div.three {
 
 .message-input {
   position: absolute;
-
+  bottom: 0;
   width: 100%;
   padding: 10px;
 
@@ -551,3 +570,21 @@ div.three {
   margin-left: 3%;
   padding-top: 10px;
 }
+
+.splash {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#messageListDiv {
+  float:right;
+  width:500px;
+  padding:30px 30px 20px;
+}
+
+/*#messageListDiv > h4{
+  
+}*/
