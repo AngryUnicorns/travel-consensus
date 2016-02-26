@@ -84,7 +84,6 @@ div.three {
   top: 50%;
   margin-top: -15px;
   margin-left: -100px;
-  position: fixed;
 }
 
 .top-bar-logout{
@@ -122,17 +121,15 @@ div.three {
 }
 
 .form {
-  position: fixed;
-  z-index: 3;
-
-  display: none;
-
-  width: 18em;
-  margin: 7% 43%;
-
-  border: 1px solid black;
-  border-radius: 11px;
-  background: white;
+    position: fixed;
+    z-index: 1;
+    display: block;
+    width: 18em;
+    margin: 7% 43%;
+    border: 1px solid black;
+    border-radius: 11px;
+    background: white;
+    height: 50%;
 }
 
 .form-signup {
@@ -588,4 +585,7 @@ div.three {
 /*#messageListDiv > h4{
   
 }*/
+.trip-sidebar {
+
+}
 
