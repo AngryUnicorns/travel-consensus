@@ -8,12 +8,14 @@ var SplashView = require('./SplashView.jsx');
 var User = require('../models/users.js');
 var Login = require('./Login.jsx');
 
+
 var GlobalTaskArea = React.createClass({
   getInitialState: function() {
      return {
         logged_in: User.isLoggedIn(),
         messagesInTask: [],
-        suggestionsInTask: []
+        suggestionsInTask: [],
+        // yourTrips: []
       }
   },
 
@@ -68,9 +70,19 @@ var GlobalTaskArea = React.createClass({
           <SplashView />
         </div>
       )
+    }
 
-    } else {
+    // else if(this.state.logged_in){
+    //   return (
+    //     <div className="main">
+    //       <SplashView />
+    //     </div>
+    //   )
+    // }
+
+    else {
         return (
+
         <div className="main">
 
         <SuggestionList suggestions={this.state.suggestionsInTask} />
@@ -93,10 +105,14 @@ var GlobalTaskArea = React.createClass({
             <button type="submit">Post</button>
           </form>
         </div>
-
       </div>
     )
   } //closes else
+
+  //get.js, fetchTrip and redirect them to that trip
+  //<TaskList tasks={this.state.tasksInList} addNewTask={this.props.addNewTask} />
+
+
 }
 
 });
