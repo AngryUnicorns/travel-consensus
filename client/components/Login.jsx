@@ -22,7 +22,7 @@ var Login = React.createClass({
       )
     } else {
       return (
-        <button className="top-bar-login" onClick={this.handleLogout}>Logout</button>
+        <button className="top-bar-logout" onClick={this.handleLogout}>Logout</button>
       )
     }
   }
