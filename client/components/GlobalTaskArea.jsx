@@ -4,13 +4,17 @@ var SuggestionList = require('./SuggestionList.jsx');
 var SuggestionItem = require('./SuggestionItem.jsx');
 var MessageList = require('./MessageList.jsx');
 var MessageItem = require('./MessageItem.jsx');
+var SplashView = require('./SplashView.jsx');
+var User = require('../models/users.js');
+var Login = require('./Login.jsx');
 
 var GlobalTaskArea = React.createClass({
   getInitialState: function() {
-    return {
-      messagesInTask: [],
-      suggestionsInTask: []
-    }
+     return {
+        logged_in: User.isLoggedIn(),
+        messagesInTask: [],
+        suggestionsInTask: []
+      }
   },
 
   handleNewMessage: function(e) {
@@ -18,7 +22,7 @@ var GlobalTaskArea = React.createClass({
 
     var newMessage = {
       content: $('.newMessageContent').val(),
-      id_user: 1    /////// CHANGE TO CURRENTLY LOGGED IN USER
+      id_user: 4    /////// CHANGE TO CURRENTLY LOGGED IN USER
     }
 
     // clear newMessageContent field
@@ -49,9 +53,25 @@ var GlobalTaskArea = React.createClass({
     this.setState( {suggestionsInTask: this.props.suggestionsInTask} )
   },
 
+  // changeStatus: function(login) {
+  //   this.setState({logged_in: User.isLoggedIn()});
+  // },
+
   render: function() {
-    return (
-      <div className="main">
+    setTimeout(() => {
+      this.setState({logged_in: User.isLoggedIn()});
+    }, 2000);
+
+    if(!this.state.logged_in) {
+      return (
+        <div>
+          <SplashView />
+        </div>
+      )
+
+    } else {
+        return (
+        <div className="main">
 
         <SuggestionList suggestions={this.state.suggestionsInTask} />
 
@@ -76,7 +96,9 @@ var GlobalTaskArea = React.createClass({
 
       </div>
     )
-  }
+  } //closes else
+}
+
 });
 
 module.exports = GlobalTaskArea;
