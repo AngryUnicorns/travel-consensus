@@ -7,7 +7,8 @@ var SuggestionList = React.createClass({
     // can not read property `map` of undefined, yet it logs inside of this?
     // I think it has something to do with virtual dom processing vs. actual
     // rendering. It works!
-    var suggestionList = this.props.suggestions.map(function(suggestion) {
+    var suggestions = this.props.suggestions || [];
+    var suggestionList = suggestions.map(function(suggestion) {
       return <SuggestionItem
                suggestion={suggestion}
              />
