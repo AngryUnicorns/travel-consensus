@@ -22,7 +22,10 @@ User.create = function(attrs) {
   return User.findByAuthId(attrs['auth_id']).then(function(user){
     if(user) {
       delete user['auth_id'];
-      return User.updateById(user.id, attrs);
+      console.log(user.id);
+      return User.updateById(user.id, attrs).then(function(){
+        return user;
+      });
     } else {
       return User.insert(attrs);
     }
@@ -97,6 +100,7 @@ var getAuthId = function(authData) {
 */
 
 User.findById = function(id) {
+  console.log('searched for id', id);
   return User.findFirst({id : id}).catch(function(error) {
       console.warn('error retrieving user id', id);
       console.warn(error);

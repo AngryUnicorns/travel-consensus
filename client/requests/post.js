@@ -78,8 +78,11 @@ exports.createUser = function(authResponse) {
       return response.json();
     })
     .then(function(data) {
-      console.log('!Posted new suggestion to database!', data);
+      console.log('!Posted new user!', data);
       return data;
+    })
+    .catch(function(error){
+      console.log('create user error', error);
     })
 };
 // '/:id_task/suggestions/:id_suggestion/vote'
