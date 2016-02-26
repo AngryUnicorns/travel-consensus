@@ -486,7 +486,17 @@ div.three {
 
 .suggestion-display {
   padding: 10px;
+  overflow: scroll;
+  height: 21.7%;
+  color: #fff;
+  border-bottom: 1px solid #ccc;
+  background-color: #c0392b;
+}
 
+.suggestion-display-box {
+  padding: 10px;
+  overflow: scroll;
+  height: 10%;
   color: #fff;
   border-bottom: 1px solid #ccc;
   background-color: #c0392b;
@@ -522,10 +532,8 @@ div.three {
 
 .chat-display {
   overflow: scroll;
-  height: 250px;
+  height: 45%;
   bottom: 0;
-  width: 100%;
-  position: absolute;
   padding: 5px;
   background-color: #e3e3e3;
   border-bottom: 2px solid white;
@@ -536,17 +544,13 @@ div.three {
 }
 
 .message-input {
-  position: absolute;
   bottom: 0;
-  width: 100%;
   padding: 10px;
 
   background-color: #ccc;
 }
 
 .message-input button {
-  /*  float:right;
-  margin-right:60px;*/
   position: relative;
   top: 6px;
 }
@@ -577,7 +581,7 @@ div.three {
 }
 
 #messageListDiv {
-  float:right;
+  float:left;
   width:500px;
   padding:30px 30px 20px;
 }
@@ -589,3 +593,12 @@ div.three {
 
 }
 
+.top-bar-logout{
+  position: absolute;
+  z-index: 1;
+  top: 1%;
+  right: 0;
+  height: 36px;
+  margin-right: 2%;
+  background: white;
+}
