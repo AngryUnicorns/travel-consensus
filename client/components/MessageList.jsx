@@ -12,7 +12,6 @@ var MessageList = React.createClass({
                message={message}
              />
     }.bind(this));
-
     return (
       <div id="messageListDiv">
         <h4>messages:</h4>
