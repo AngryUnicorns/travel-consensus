@@ -12,9 +12,10 @@ User.signIn = function() {
 	return OAuth.popup('facebook')
 	.fail(console.log)
 	.then(OAuthUser.signin)
-	.then(PostHelper.createUser)
-	.then(function(user){
-		currentUser = user;
+	.then(function(res){
+		return PostHelper.createUser(res).then(function(user){
+			localStorage.setItem('db_user', JSON.stringify(user));
+		});
 	})
 }
 
@@ -29,8 +30,8 @@ User.signOut = function() {
 	} else {
 		return OAuthUser.getIdentity().logout()
 		.then(function(){
-      currentUser = null;
-    })
+      		localStorage.setItem('db_user', null);
+    	})
 	}
 }
 
@@ -49,6 +50,15 @@ User.getInfo = function() {
 	return OAuthUser.getIdentity();
 }
 
+User.getDbUser = function() {
+	var dbString = localStorage.getItem('db_user');
+	if(dbString) {
+		return JSON.parse(dbString);
+	} else {
+		return {};
+	}
+}
+
 User.getID = function() {
-	return currentUser;
+	return User.getDbUser().id;
 }

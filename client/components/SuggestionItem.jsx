@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var DeleteHelper = require('../requests/delete.js');
 var PostHelper = require('../requests/post.js');
 var User = require('../models/users')
+var _ = require('underscore');
 
 var SuggestionItem = React.createClass({
 
@@ -14,19 +15,14 @@ var SuggestionItem = React.createClass({
 
   voteHandler: function() {
     suggestionId = this.props.suggestion.id;
-    userId = this.props.suggestion.id_user;
-
-    PostHelper.upVoteSuggestion(suggestionId, userId)
+    PostHelper.upVoteSuggestion(suggestionId, User.getID());
   },
 
   arrowHelper: function() {
-    var user = User.getID(),
-    userVoteArray = this.props.suggestion.vote_users;
-
-    if(userVoteArray.indexOf(user) === -1) {
+    userVoteArray = _.pluck(this.props.suggestion.votes, 'user_id');
+    if(userVoteArray.indexOf(User.getID()) === -1) {
       return "fa fa-arrow-up"
-    }
-    else {
+    } else {
       return "fa fa-arrow-down"
     }
   },

@@ -8,7 +8,6 @@ var SuggestionList = React.createClass({
     // I think it has something to do with virtual dom processing vs. actual
     // rendering. It works!
     var suggestionList = this.props.suggestions.map(function(suggestion) {
-      console.log('suggestionssss', suggestion);
       return <SuggestionItem
                suggestion={suggestion}
              />

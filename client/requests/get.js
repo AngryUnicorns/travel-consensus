@@ -1,5 +1,6 @@
 require('./request-helpers.js'); // Imports headers
 require('whatwg-fetch');      // imports 'fetch' function
+var User = require('../models/users');
 
 exports.setViewDataUpdateInterval = function(taskList, taskArea, interval) {
   setInterval(function() {
@@ -15,7 +16,6 @@ exports.setViewDataUpdateInterval = function(taskList, taskArea, interval) {
       .then(function(){
         var elem = document.getElementsByClassName('chat-display');
         elem.scrollTop = elem.scrollHeight;
-        console.log('this fired!');
       })
 
     fetchSuggestions(window.globalStateTaskId)
@@ -50,8 +50,19 @@ function fetchSuggestions(taskId) {
     .then(function(response) {
       return response.json();
     })
+    .then(processSuggestions)
     .catch(function(error) {
       console.error('syntax error');
       console.dir(error);
     })
 }
+
+function processSuggestions(suggestions) {
+  var userID = User.getID();
+  return suggestions.map(function(suggestion){
+    return suggestion;
+  })
+  return suggestions;
+}
+
+
