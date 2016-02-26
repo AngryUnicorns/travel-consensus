@@ -6,7 +6,8 @@ var TaskList = React.createClass({
   newTask: function(e){
     e.preventDefault();
     var newTask = {
-      name: $('.newTask').val()
+      name: $('.newTask').val(),
+      id_trip : window.globalStateTripId,
     }
 
     // clear newTask field
