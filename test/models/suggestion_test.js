@@ -54,7 +54,7 @@ describe('Suggestion model', function() {
       return dbCleaner.clean(db, {mode: 'truncate'});
     })
 
-    it_.only('should returns all suggestions for a given task along with the users that have voted on that task', function * () {
+    it_('should returns all suggestions for a given task along with the users that have voted on that task', function * () {
     	// populate the data
         var user = yield User.create(testUser);
         var user2 = yield User.create(testUser2);
