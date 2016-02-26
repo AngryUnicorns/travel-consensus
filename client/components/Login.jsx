@@ -18,11 +18,15 @@ var Login = React.createClass({
   render: function() {
     if(!this.state.logged_in) {
       return (
-        <button className="top-bar-login" onClick={this.handleLogin}>Login</button>
+          // <form className="form">
+          <div className="splashBox">
+              <button className="top-bar-login" onClick={this.handleLogin}>Login</button>
+          </div>
+          // </form>
       )
     } else {
       return (
-        <button className="top-bar-login" onClick={this.handleLogout}>Logout</button>
+        <button className="top-bar-logout" onClick={this.handleLogout}>Logout</button>
       )
     }
   }
