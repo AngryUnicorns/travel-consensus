@@ -22,7 +22,7 @@ var GlobalTaskArea = React.createClass({
 
     var newMessage = {
       content: $('.newMessageContent').val(),
-      id_user: 4    /////// CHANGE TO CURRENTLY LOGGED IN USER
+      id_user: User.getID(),
     }
 
     // clear newMessageContent field
@@ -37,10 +37,10 @@ var GlobalTaskArea = React.createClass({
 
   handleNewSuggestion: function(e) {
     e.preventDefault();
-
     var newSuggestion = {
       suggestion: $('.newSuggestionContent').val(),
-      id_user: 1    /////// CHANGE TO CURRENTLY LOGGED IN USER
+      id_user: User.getID(),
+      id_task : window.globalStateTaskId,
     }
 
     // clear newSuggestionContent field
