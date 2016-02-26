@@ -494,7 +494,6 @@ div.three {
 
 .suggestion-display p {
   display: inline;
-
   margin-right: 15px;
 }
 
@@ -502,9 +501,9 @@ div.three {
   margin-bottom: 0;
 }
 
-/*.suggestion .newSuggestionContent{
-    color: #000;
-}*/
+.suggestion {
+  font-size : 18px;
+}
 
 .suggestion-display input {
   color: #000 !important;
@@ -587,5 +586,9 @@ div.three {
 }*/
 .trip-sidebar {
 
+}
+
+.voted-icon {
+  margin-left : 10px;
 }
 
