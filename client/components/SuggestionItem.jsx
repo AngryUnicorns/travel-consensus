@@ -18,7 +18,7 @@ var SuggestionItem = React.createClass({
       <li className="suggestion">
       {this.props.suggestion.suggestion} 
       <VoteIcon suggestion={this.props.suggestion} />
-      <i className="fa fa-times" onClick={this.clickHandler}></i>
+      <i className="voted-icon fa fa-times" onClick={this.clickHandler}></i>
       </li>
     )
   }

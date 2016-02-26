@@ -21,8 +21,8 @@ var VoteIcon = React.createClass({
     }  
   },
   arrowHelper: function() {
-    if(this.props.suggestion.user_vote_status === 'voted_on_this') return 'fa fa-arrow-down';
-    if(this.props.suggestion.user_vote_status === 'no_vote') return 'fa fa-arrow-up';
+    if(this.props.suggestion.user_vote_status === 'voted_on_this') return 'voted-icon fa fa-arrow-down';
+    if(this.props.suggestion.user_vote_status === 'no_vote') return 'voted-icon fa fa-arrow-up';
   },
   render: function() {
   	if(this.props.suggestion.user_vote_status === 'voted_on_other') {

@@ -7,7 +7,6 @@ var Task = require('../models/tasks');
 
 exports.setViewDataUpdateInterval = function(taskList, taskArea, interval) {
   setInterval(function() {
-    
     fetchTasks(window.globalStateTripId)
     .then(function(tasks){
       var allFetches = [];
@@ -22,7 +21,7 @@ exports.setViewDataUpdateInterval = function(taskList, taskArea, interval) {
       return Promise.all(allFetches);
     }).then(function(){
       var suggestions = cachedTasks[window.globalStateTaskId]['suggestions'];
-      _.each(cachedTasks, task => Task.process(task, 2));
+      _.each(cachedTasks, task => Task.process(task, 3));
       taskArea.setState( {suggestionsInTask: suggestions} );
       taskList.setState({tasksInList : _.values(cachedTasks)});
     });
