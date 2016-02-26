@@ -85,7 +85,7 @@ exports.createUser = function(authResponse) {
       console.log('create user error', error);
     })
 };
-// '/:id_task/suggestions/:id_suggestion/vote'
+
 exports.upVoteSuggestion = function(suggestionId, userId) {
   return fetch('task/' + window.globalStateTaskId + '/suggestions/' + suggestionId + '/vote', {
   // return fetch('/:id_task/suggestions/:id_suggestion/vote', {
@@ -104,18 +104,4 @@ exports.upVoteSuggestion = function(suggestionId, userId) {
     console.log('got an error over here! in post on upVoteSuggestion')
   })
 };
-// '/:id_task/suggestions/:id_suggestion/vote'
-// exports.downVoteSuggestion = function(userObject) {
-//   return fetch(window.globalStateTaskId + '/suggestions/' + userObject.suggestionID + '/vote', {
-//     method: 'PUT',
-//     headers: requestHeaders,
-//     body: JSON.stringify(userObject)
-//   })
-//   .then(function(response){
-//     return response.json();
-//   })
-//   .then(function(data){
-//     console.log('!Changed Vote in database!', data)
-//     return data
-//   })
-// };
+

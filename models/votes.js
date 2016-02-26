@@ -15,8 +15,8 @@ Votes.addVote = function(suggestionId, userId) {
   Delete vote from suggestion
 */
 
-Votes.removeVote = function(suggestionID) {
-  return db('votes').where({id: suggestionId}).decrement('count', 1)
+Votes.removeVote = function(voteId) {
+  return db('votes').where({id: voteId}).del()
     .catch(reportError('error updating votes on suggestion'))
 }
 
