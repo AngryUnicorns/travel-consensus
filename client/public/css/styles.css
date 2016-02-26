@@ -88,13 +88,13 @@ div.three {
 }
 
 .top-bar-logout{
-  position: absolute;
-  z-index: 1;
-  top: 4px;
-  right: 0;
-  height: 36px;
-  margin-right: 7%;
-  background: white;
+    position: absolute;
+    z-index: 1;
+    top: 1%;
+    right: 0;
+    height: 36px;
+    margin-right: 2%;
+    background: white;
 }
 
 .top-bar-login:hover,
@@ -588,3 +588,4 @@ div.three {
 /*#messageListDiv > h4{
   
 }*/
+
