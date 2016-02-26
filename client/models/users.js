@@ -6,10 +6,16 @@ OAuth.initialize('njnrc8cfKF1IOQAKEGLjQnjl-j0');
 
 const User = module.exports;
 
-
+var currentUser = null;
 
 User.signIn = function() {
-	return OAuth.popup('facebook').fail(console.log).then(OAuthUser.signin).then(PostHelper.createUser);
+	return OAuth.popup('facebook')
+	.fail(console.log)
+	.then(OAuthUser.signin)
+	.then(PostHelper.createUser)
+	.then(function(user){
+		currentUser = user;
+	})
 }
 
 User.isLoggedIn = function() {
@@ -21,7 +27,10 @@ User.signOut = function() {
 	if(!user) {
 		return Promise.resolve(null);
 	} else {
-		return OAuthUser.getIdentity().logout();
+		return OAuthUser.getIdentity().logout()
+		.then(function(){
+      currentUser = null;
+    })
 	}
 }
 
@@ -41,5 +50,5 @@ User.getInfo = function() {
 }
 
 User.getID = function() {
-	return User.getInfo().token;
+	return currentUser;
 }
