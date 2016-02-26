@@ -87,7 +87,7 @@ var GlobalTaskArea = React.createClass({
 
         <SuggestionList suggestions={this.state.suggestionsInTask} />
 
-        <div className="suggestion-display">
+        <div className="suggestion-display-box">
           <form onSubmit={this.handleNewSuggestion}>
           <p>Add suggestion:</p>
             <input className="newSuggestionContent" type="text"></input>
