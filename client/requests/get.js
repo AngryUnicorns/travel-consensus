@@ -57,12 +57,32 @@ function fetchSuggestions(taskId) {
     })
 }
 
+function idInVotesArray(id, votes) {
+  return votes.some(function(vote){
+    return vote.user_id === id;
+  })
+}
+
 function processSuggestions(suggestions) {
   var userID = User.getID();
+  
+  var userHasVoted = suggestions.some(function(suggestion){
+    return idInVotesArray(userID, suggestion.votes);
+  });
+
   return suggestions.map(function(suggestion){
+    setUserVoteStatus(suggestion, userID, userHasVoted);
     return suggestion;
-  })
-  return suggestions;
+  });
+}
+
+function setUserVoteStatus(suggestion, userID, userHasVoted) {
+    var userHasVotedOnThis = idInVotesArray(userID, suggestion.votes);
+    if(userHasVotedOnThis) {
+      suggestion.user_vote_status = 'voted_on_this';
+    } else {
+      suggestion.user_vote_status = userHasVoted ? 'voted_on_other' : 'no_vote';
+    }   
 }
 
 
