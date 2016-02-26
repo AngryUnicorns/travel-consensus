@@ -6,6 +6,8 @@ OAuth.initialize('njnrc8cfKF1IOQAKEGLjQnjl-j0');
 
 const User = module.exports;
 
+
+
 User.signIn = function() {
 	return OAuth.popup('facebook').fail(console.log).then(OAuthUser.signin).then(PostHelper.createUser);
 }

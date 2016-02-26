@@ -154,7 +154,7 @@ TaskAPI.get('/:id_task/messages', function(request, response) {
 TaskAPI.get('/:id_task/suggestions', function(request, response) {
   var id_task = request.params.id_task;
 
-  Suggestion.allOfTask(id_task)
+  Suggestion.allOfTaskWithVotes(id_task)
     .then(sendStatusAndData(response, 200))
     .catch(sendStatusAndError(response, 500, 'Server error getting suggestions by task id'))
 })
