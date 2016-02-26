@@ -31,7 +31,6 @@ exports.downVoteSuggestion = function(suggestionId, voteId) {
   return fetch('task/' + window.globalStateTaskId + '/suggestions/' + suggestionId + '/vote/' + voteId, {
     method: 'DELETE',
     headers: requestHeaders,
-    // body: JSON.stringify(voteIds)
   })
   .then(function(response){
     return response.json();
