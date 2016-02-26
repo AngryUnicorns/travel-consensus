@@ -84,6 +84,9 @@ TaskAPI.post('/:id_task/suggestion', function(request, response) {
 */
 TaskAPI.delete('/:id_task/suggestion', function(request, response) {
   Suggestion.delete(request.body.id_suggestion)
+    .then(function(){
+      return {success: true};
+    })
     .then(sendStatusAndData(response, 201))
     .catch(sendStatusAndError(response, 500, 'Server error deleting suggestion from task'))
 })
@@ -169,9 +172,12 @@ TaskAPI.post('/:id_task/suggestions/:id_suggestion/vote', function(request, resp
     .catch(sendStatusAndError(response, 500, 'Server error posting vote'))
 })
 
-TaskAPI.put('/:id_task/suggestions/:id_suggestion/vote', function(request, response) {
-  var id_task = request.params.id_task;
-  Suggestion.allOfTask(id_task)
+TaskAPI.delete('/:id_task/suggestions/:id_suggestion/vote/:id_vote', function(request, response) {
+  var id_vote = request.params.id_vote;
+  Vote.removeVote(id_vote)
+    .then(function(){
+      return {success: true}
+    })
     .then(sendStatusAndData(response, 200))
     .catch(sendStatusAndError(response, 500, 'Server error changing vote'))
 })

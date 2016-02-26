@@ -25,3 +25,21 @@ exports.deleteSuggestion = function(suggestionObject) {
       console.log('errored deleting suggestion', error)
     })
 };
+
+
+exports.downVoteSuggestion = function(suggestionId, voteId) {
+  return fetch('task/' + window.globalStateTaskId + '/suggestions/' + suggestionId + '/vote/' + voteId, {
+    method: 'DELETE',
+    headers: requestHeaders,
+  })
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(data){
+    console.log('!Deleted Vote in database!', data)
+    return data;
+  })
+  .catch(function(err){
+    console.log(err, 'Error In downVoteSuggestion')
+  })
+};
