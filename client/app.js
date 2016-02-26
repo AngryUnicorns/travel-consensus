@@ -8,7 +8,7 @@ var GlobalTaskArea = require('./components/GlobalTaskArea.jsx');
 
 /******** THIS IS GLOBAL STATE *********/
 /**/  window.globalStateTripId = 1;  /**/
-/**/  window.globalStateTaskId = 1;  /**/
+/**/  window.globalStateTaskId = null;  /**/
 /***************************************/
 /*
     Just these two variables allow us to dynamically update
