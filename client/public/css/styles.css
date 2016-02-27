@@ -487,15 +487,18 @@ div.three {
 .suggestion-display {
   padding: 10px;
   overflow: scroll;
-  height: 21.7%;
+  height: 45%;
   color: #fff;
   border-bottom: 1px solid #ccc;
   background-color: #c0392b;
 }
 
+.submit-suggestion {
+  background-color: #fff;
+}
+
 .suggestion-display-box {
   padding: 10px;
-  overflow: scroll;
   height: 10%;
   color: #fff;
   border-bottom: 1px solid #ccc;
@@ -531,7 +534,7 @@ div.three {
 
 .chat-display {
   overflow: scroll;
-  height: 45%;
+  height: 20%;
   bottom: 0;
   padding: 5px;
   background-color: #e3e3e3;

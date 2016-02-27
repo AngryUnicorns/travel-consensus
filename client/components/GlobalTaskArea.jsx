@@ -91,7 +91,7 @@ var GlobalTaskArea = React.createClass({
           <form onSubmit={this.handleNewSuggestion}>
           <p>Add suggestion:</p>
             <input className="newSuggestionContent" type="text"></input>
-            <button type="submit">Post</button>
+            <button className ="submit-suggestion" type="submit">Post</button>
           </form>
         </div>
 
